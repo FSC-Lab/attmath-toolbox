@@ -1,4 +1,5 @@
-function dcm = q2dcm(q)
+function dcm = quat2mat(q)
+%QUAT2MAT Quaternion to rotation matrix converion
     if abs(norm(q) - 1) > 1e-5
         q = q / norm(q);
     end

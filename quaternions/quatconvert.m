@@ -1,4 +1,13 @@
 function out = quatconvert(q, type)
+%QUATCONVERT Quaternion conversion
+%   out = quat2convert(q, type) converts an input quaternion into the
+%   desired rotation formalism specified as a string
+%   Available conversions are:  
+%   'dcm':      DCM
+%   'eul':      321-Euler Angle
+%   'axang':    Axis-Angle as a 4-by-1 vector with angle in element 1
+%   'rotv':     Rotation vector, i.e. element in vectorspace of so(3)
+
     narginchk(1,2);
 
     if nargin == 1
@@ -8,7 +17,7 @@ function out = quatconvert(q, type)
     if norm(q(2:4)) == 0
         axis = [1;0;0];
     else
-        axis = normalize(q(2:4), "norm");
+        axis = q(2:4)./norm(q(2:4));
     end
     
     q = normalize(q(:), "norm");

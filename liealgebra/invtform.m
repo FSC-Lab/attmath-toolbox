@@ -4,6 +4,8 @@ function inv = invtform(tform)
 
 dcm = tform(1:3,1:3);
 r = tform(1:3,4);
-inv = [dcm', -dcm'*r; zeros(1,3),1];
+
+inv = [ dcm', -dcm'*r; 
+        zeros(1,3), 1];
 end
 
